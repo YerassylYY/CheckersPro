@@ -1,73 +1,30 @@
-# React + TypeScript + Vite
+#  Выполнение технического задания: Шашки
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Здарвствуйте! Данный репозиторий содержит полностью реализованное техническое задание по созданию приложения **«Шашки»**. Все обязательные требования, указанные в ТЗ, были выполнены в полном объеме, а также интегрированы уникальные авторские механики, значительно расширяющие базовый функционал.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+##  Что было сделано (Согласно ТЗ)
 
-## React Compiler
+В рамках выполнения основных требований технического задания успешно реализован классический игровой движок:
+* **Правила игры:** Полная поддержка классических правил (взятие фигур, превращение в дамки, обязательные ходы при возможности взятия).
+* **Интерфейс:** Интуитивно понятный, отзывчивый и минималистичный дизайн игрового поля.
+* **Стабильность:** Оптимизированная логика ходов, корректная обработка завершения партии и подсчета очков.
+* **Мультиплеер режим и городской рейтинг** 
+* **Игра против ботов разного уровня и общение во время игры** 
+* **Рабочая база данных** 
+* **Разные варианты игры шашек** 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+##  Авторские улучшения и креативные фичи
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Помимо базовых условий ТЗ, в проект были добавлены уникальные режимы, которые выводят привычную игру на новый уровень:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+###  1. Шашки на четверых (4-Player Mode)
+* **Новое измерение:** Разработана расширенная интерактивная доска, адаптированная для одновременной игры **четырех участников**.
+* **Динамичный геймплей:** Уникальная система ходов и механика союзов/противостояний, превращающая классическую дуэль в глубокую тактическую стратегию.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+###  2. Система квестов и испытаний (Quests System)
+* **Игровые задачи:** Интегрированы внутриигровые квесты разной сложности (например, *«Победить, сохранив всех дамок»*, *«Сделать тройное взятие за один ход»* и т.д.).
