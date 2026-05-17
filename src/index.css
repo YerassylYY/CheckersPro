@@ -1,0 +1,163 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --color-board-light: #f0d9b5;
+  --color-board-dark: #b58863;
+}
+
+:root,
+[data-theme='dark'] {
+  --app-bg: #09090b;
+  --app-surface: #18181b;
+  --app-border: #27272a;
+  --app-text: #fafafa;
+  --app-muted: #a1a1aa;
+  --board-light: #f0d9b5;
+  --board-dark: #b58863;
+  --board-frame: #8b5a2b;
+  --board-glow: transparent;
+}
+
+[data-theme='light'] {
+  --app-bg: #f4f4f5;
+  --app-surface: #ffffff;
+  --app-border: #e4e4e7;
+  --app-text: #18181b;
+  --app-muted: #71717a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--app-bg);
+  color: var(--app-text);
+  @apply antialiased min-h-screen transition-colors duration-300;
+}
+
+.board-square-light {
+  background-color: var(--board-light);
+}
+
+.board-square-dark {
+  background-color: var(--board-dark);
+}
+
+.board-frame {
+  border-color: var(--board-frame);
+  background: var(--board-bg, var(--board-frame));
+  box-shadow: var(--board-glow);
+}
+
+.board-skin-grid {
+  background: var(--board-bg, transparent);
+}
+
+/* --- Cyberpunk Neon --- */
+[data-skin='cyberpunk'] .board-frame.skin-frame-cyber {
+  border-width: 3px;
+  border-image: linear-gradient(135deg, #22d3ee, #e879f9, #22d3ee) 1;
+}
+[data-skin='cyberpunk'] .skin-grid-cyber {
+  box-shadow: inset 0 0 40px rgba(34, 211, 238, 0.08);
+}
+[data-skin='cyberpunk'] .piece-neon-glow {
+  box-shadow: 0 0 14px currentColor;
+}
+
+/* --- Regal Gold --- */
+[data-skin='regal'] .board-frame.skin-frame-regal {
+  border-width: 5px;
+  border-style: double;
+}
+[data-skin='regal'] .skin-grid-regal .board-square-light {
+  background-image: linear-gradient(145deg, #4a4540 0%, #2e2a26 100%);
+}
+[data-skin='regal'] .skin-grid-regal .board-square-dark {
+  background-image: linear-gradient(145deg, #1a1816 0%, #0d0c0b 100%);
+}
+[data-skin='regal'] .crown-regal {
+  filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.8));
+}
+
+/* --- Liquid Wood --- */
+[data-skin='liquid-wood'] .board-frame.skin-frame-wood {
+  border-radius: 6px;
+  box-shadow: var(--board-glow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+[data-skin='liquid-wood'] .skin-grid-wood .board-square-light {
+  background-image: linear-gradient(160deg, #e8c89a 0%, #c4a574 100%);
+}
+[data-skin='liquid-wood'] .skin-grid-wood .board-square-dark {
+  background-image: linear-gradient(160deg, #7a4f28 0%, #5c3a1e 100%);
+}
+
+/* --- Retro Arcade --- */
+[data-skin='retro-arcade'] .board-frame.skin-frame-arcade {
+  border-width: 4px;
+  border-radius: 0;
+  image-rendering: pixelated;
+}
+[data-skin='retro-arcade'] .skin-grid-arcade {
+  border: 2px solid #ff6bcb;
+  image-rendering: pixelated;
+}
+[data-skin='retro-arcade'] .piece-pixel {
+  border-radius: 4px !important;
+  image-rendering: pixelated;
+}
+
+/* --- Cosmic Nebula --- */
+[data-skin='cosmic'] .board-frame.skin-frame-cosmic {
+  border-width: 3px;
+  animation: cosmic-pulse 4s ease-in-out infinite;
+}
+[data-skin='cosmic'] .skin-grid-cosmic .board-square-dark {
+  background-image: radial-gradient(
+    circle at 30% 30%,
+    rgba(129, 140, 248, 0.15) 0%,
+    transparent 60%
+  );
+}
+@keyframes cosmic-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 24px rgba(129, 140, 248, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 36px rgba(167, 139, 250, 0.35);
+  }
+}
+
+@keyframes board-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+}
+
+.animate-board-shake {
+  animation: board-shake 0.15s ease-in-out 2;
+}
+
+@keyframes clock-urgent {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+
+.animate-clock-urgent {
+  animation: clock-urgent 0.8s ease-in-out infinite;
+}
